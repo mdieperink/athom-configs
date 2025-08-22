@@ -278,7 +278,7 @@ sensor:
 
   - platform: total_daily_energy
     name: "Total Energy Since Boot"
-    id: total_daily_energy
+    id: total_energy_since_boot
     restore: true
     power_id: power_sensor
     unit_of_measurement: kWh
