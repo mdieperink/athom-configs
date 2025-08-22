@@ -186,6 +186,7 @@ sensor:
   # Reports the WiFi signal strength in %
   - platform: copy
     source_id: wifi_signal_db
+    id: wifi_signal_pct
     name: "WiFi Signal Percent"
     filters:
       - lambda: return min(max(2 * (x + 100.0), 0.0), 100.0);
@@ -244,6 +245,7 @@ sensor:
 
     apparent_power:
       name: "Apparent Power"
+      id: apparent_power
       icon: mdi:power
       filters:
         - throttle_average: ${sensor_update_interval}
@@ -251,12 +253,14 @@ sensor:
     reactive_power:
       name: "Reactive Power"
       icon: mdi:flash
+      id: reactive_power
       filters:
         - throttle_average: ${sensor_update_interval}
 
     power_factor:
       name: "Power Factor"
       icon: mdi:percent-outline
+      id: power_factor
       filters:
         - throttle_average: ${sensor_update_interval}
 
@@ -274,6 +278,7 @@ sensor:
 
   - platform: total_daily_energy
     name: "Total Energy Since Boot"
+    id: total_daily_energy
     restore: true
     power_id: power_sensor
     unit_of_measurement: kWh
@@ -348,19 +353,19 @@ light:
       number: GPIO13
 
 text_sensor:
-  - platform: wifi_info
-    ip_address:
-      name: "IP Address"
-      icon: mdi:ip-network
-      entity_category: diagnostic
-    ssid:
-      name: "Connected SSID"
-      icon: mdi:wifi-strength-2
-      entity_category: diagnostic
-    mac_address:
-      name: "Mac Address"
-      icon: mdi:network-pos
-      entity_category: diagnostic
+  # - platform: wifi_info
+  #   ip_address:
+  #     name: "IP Address"
+  #     icon: mdi:ip-network
+  #     entity_category: diagnostic
+  #   ssid:
+  #     name: "Connected SSID"
+  #     icon: mdi:wifi-strength-2
+  #     entity_category: diagnostic
+  #   mac_address:
+  #     name: "Mac Address"
+  #     icon: mdi:network-pos
+  #     entity_category: diagnostic
 
   #  Creates a sensor showing when the device was last restarted
   - platform: template
